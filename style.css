@@ -284,15 +284,36 @@
   /*---------------------
   ---- Media Queries ----
   ---------------------*/
-  @media screen and (max-width: 767px) {/*--At screens BELOW 768px, hides nav menu items and displays trigram --*/
-    .topnav a:not(a.logo, a.trigram) {display: none;}
+  @media screen and (max-width: 767px) { 
+    .topnav {
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+    }
+  
+    .topnav a {
+      display: block;
+      width: 100%;
+      padding: 1em;
+      text-align: center;
+    }
+  
     .topnav a.trigram {
-      display:inherit;
-      justify-self: end;
-      transform:scale(2.5);
+      display: inline-block;
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      transform: scale(2.5);
+    }
+  
+    .topnav a:not(.trigram) {
+      display: none;
+    }
+  
+    .topnav.open {
+      height: auto;
     }
   }
-  /*-- Now for the min-width queries --*/
   @media screen and (min-width: 550px) {
     main{grid-template-columns:repeat(2, 1fr);}
   }
